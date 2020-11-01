@@ -1,11 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import ReactCountryFlag from "react-country-flag";
-import { Card, CardContent, Avatar } from "@material-ui/core";
+import { Card, CardContent, Avatar, List } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
-
 import User from "../types/User";
+import UserDetail from "../components/UserDetail";
+import CakeIcon from "@material-ui/icons/Cake";
+import LocationCityIcon from "@material-ui/icons/LocationCity";
+import EmailIcon from "@material-ui/icons/Email";
+import PhoneIcon from "@material-ui/icons/Phone";
 
 const useStyles = makeStyles((theme) => ({
   cardContent: {
@@ -17,29 +21,29 @@ const useStyles = makeStyles((theme) => ({
   cardRow: {
     display: "flex",
     alignItems: "center",
-    justifyContent: "space-between",
+    padding: 15,
   },
   picture: {
     width: theme.spacing(20),
     height: theme.spacing(20),
     fontSize: 48,
-    margin: theme.spacing(0, 0, 5, 0),
   },
   pictureContent: {
     width: theme.spacing(22),
     height: theme.spacing(22),
   },
+  flag: {
+    marginLeft: 20,
+  },
   avatarContainer: {
     display: "flex",
     alignItems: "center",
+    flexDirection: "column",
     justifyContent: "center",
   },
 }));
 
 const UserCard: React.FC<User> = (props) => {
-  const [thumbnailLoaded, setThumbnailLoaded] = useState<boolean>(false);
-  const [highResLoaded, setHighResLoaded] = useState<boolean>(false);
-
   const classes = useStyles();
   return (
     <Card className={classes.card}>
@@ -53,15 +57,21 @@ const UserCard: React.FC<User> = (props) => {
               src={props.picture.largeUrl}
             />
           </Avatar>
+          <div className={classes.cardRow}>
+            {props.name}
+            <ReactCountryFlag className={classes.flag} countryCode={props.nationality} svg />
+          </div>
         </div>
-        <div className={classes.cardRow}>
-          {props.name}
-          <ReactCountryFlag countryCode={props.nationality} svg />
-        </div>
-        <div>{props.age}</div>
-        <div>{props.location}</div>
-        <div>{props.email}</div>
-        <div>{props.phone}</div>
+        <List>
+          <UserDetail description="Age" content={props.age.toString()} icon={<CakeIcon />} />
+          <UserDetail
+            description="Currently lives in"
+            content={props.location}
+            icon={<LocationCityIcon />}
+          />
+          <UserDetail description="Email" content={props.email} icon={<EmailIcon />} />
+          <UserDetail description="Phone" content={props.phone} icon={<PhoneIcon />} />
+        </List>
       </CardContent>
     </Card>
   );
