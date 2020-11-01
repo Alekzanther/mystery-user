@@ -4,8 +4,14 @@ body {
     "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: radial-gradient(ellipse at center, #f1e9da 0%, #f1e9da 35%, #efefef 100%);
-  overflow: hidden;
+  /*  background: radial-gradient(ellipse at center, #f1e9da 0%, #f1e9da 35%, #efefef 100%);*/
+  background: #d9a7c7; /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #fffcdc, #d9a7c7); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #fffcdc,
+    #d9a7c7
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
 
 code {
