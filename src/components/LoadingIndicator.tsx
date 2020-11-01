@@ -1,13 +1,8 @@
-import React from 'react';
-import {Card} from '@material-ui/core';
-export default function UserCard(): React.ReactNode {
+import React from "react";
+import { CircularProgress } from "@material-ui/core";
 
-  return (
-
-    <Card>
-    <div>Loading...</div>
-    </Card>
-  );
-
+const UserCard: React.FC = () => {
+  return <CircularProgress color="primary" />;
 };
 
+export default UserCard;

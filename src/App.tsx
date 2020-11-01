@@ -2,48 +2,57 @@ import React, { useState } from "react";
 import { Container, Button } from "@material-ui/core";
 import FetchUser from "./api/FetchUser";
 import UserCard from "./containers/UserCard";
+import LoadingIndicator from "./components/LoadingIndicator";
 import User from "./types/User";
 import "./App.css";
 
 export default function App() {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const [currentError, setCurrentError] = useState<string | null>(null);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [buttonText, setButtonText] = useState<string>("Fetch your first user");
 
   function fetchUserClick() {
+    setLoading(true);
     setCurrentUser(null);
     FetchUser()
       .then((user) => {
+        setLoading(false);
         setCurrentUser(user);
+        setButtonText("Fetch another");
       })
       .catch((reason) => {
         console.log(reason);
         setCurrentError("Something went wrong");
+        setButtonText("Try again");
       });
   }
 
   if (currentError != null) {
     return (
-      <Container maxWidth="sm">
-        <header className="App-header">
-          <p>:(</p>
-          <Button variant="contained" onClick={() => fetchUserClick()}>
-            Try again!
-          </Button>
-          {currentError}
-        </header>
-      </Container>
+      <div className="App-content">
+        {currentError}
+        <Button variant="contained" onClick={() => fetchUserClick()}>
+          Try again!
+        </Button>
+      </div>
     );
   }
 
   return (
-    <Container maxWidth="sm">
-      <div className="App-content">
-        <p>Fetch your next mystery user</p>
-        <Button variant="contained" onClick={() => fetchUserClick()}>
-          Let's go!
+    <div className="App-content">
+      {loading && <LoadingIndicator />}
+      {currentError && <div>{currentError}</div>}
+      {currentUser && <UserCard {...currentUser}></UserCard>}
+      {!loading && (
+        <Button
+          id="fetchButton"
+          variant="contained"
+          color="primary"
+          onClick={() => fetchUserClick()}>
+          {buttonText}
         </Button>
-        {currentUser && <UserCard {...currentUser}></UserCard>}
-      </div>
-    </Container>
+      )}
+    </div>
   );
 }
