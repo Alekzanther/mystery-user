@@ -6,13 +6,10 @@ export default async function FetchUser(): Promise<User> {
       .then((response) => response.json()) //convert to json
       .then((responseJson) => responseJson.results[0]) //forward the actual details
       .then((userJson) => {
-        // to test error state:
-        //throw new Error("Oh my...");
-
         var user: User = {
           name: userJson.name.first + " " + userJson.name.last,
           nationality: userJson.nat,
-          location: userJson.location.city,
+          location: userJson.location.city + ", " + userJson.location.country,
           email: userJson.email,
           phone: userJson.phone,
           age: userJson.dob.age,
