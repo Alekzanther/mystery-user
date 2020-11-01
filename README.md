@@ -39,7 +39,7 @@ Builds the app for production to the `build` folder.
  - [Issey:s error animation](https://lottiefiles.com/trufffle)
 - ReactCountryFlag
 - LazyLoadImage
-- [Material UI](https://material-ui.com).
+- [Material UI](https://material-ui.com)
 
 ## Things to improve
 - Reduce makeStyles-clutter by overriding the main theme
