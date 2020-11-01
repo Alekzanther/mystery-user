@@ -34,12 +34,12 @@ Launches the test runner in the interactive watch mode.
 Builds the app for production to the `build` folder.
 
 ## Special thanks to  
-- [Create React App](https://github.com/facebook/create-react-app).
+- [Create React App](https://github.com/facebook/create-react-app)
 - [Lottie](https://airbnb.design/lottie/)
  - [Issey:s error animation](https://lottiefiles.com/trufffle)
 - ReactCountryFlag
 - LazyLoadImage
-- [Material UI](https://material-ui.com)
+- [Material UI](https://material-ui.com).
 
 ## Things to improve
 - Reduce makeStyles-clutter by overriding the main theme
