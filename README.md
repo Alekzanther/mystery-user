@@ -40,3 +40,10 @@ Builds the app for production to the `build` folder.\
 - ReactCountryFlag
 - LazyLoadImage
 - [Material UI](https://material-ui.com)
+
+## Things to improve
+- Reduce makeStyles-clutter by overriding the main theme
+- More comments
+- More tests
+- Maybe fade stuff out to the left when requesting a new user
+- And lots more! 
