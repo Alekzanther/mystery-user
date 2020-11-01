@@ -13,8 +13,8 @@ A simple app that fetches random mysterious users and displays some of their inf
 - Loading indicators
 
 ## Prerequisites
-1 yarn
-1 run `yarn install` to install the dependencies
+1. yarn
+1. run `yarn install` to install the dependencies
 
 ## Available Scripts
 
