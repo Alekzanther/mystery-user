@@ -6,7 +6,7 @@ export default async function FetchUser(): Promise<User> {
       .then((response) => response.json()) //convert to json
       .then((responseJson) => responseJson.results[0]) //forward the actual details
       .then((userJson) => {
-        var user: User = {
+        let user: User = {
           name: userJson.name.first + " " + userJson.name.last,
           nationality: userJson.nat,
           location: userJson.location.city + ", " + userJson.location.country,
