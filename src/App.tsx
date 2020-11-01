@@ -31,6 +31,7 @@ export default function App() {
         setLoading(false);
         setCurrentUser(user);
         setButtonText("Fetch another");
+        setCurrentError(null);
       })
       .catch((reason) => {
         console.log(reason);
