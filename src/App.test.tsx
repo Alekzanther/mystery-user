@@ -4,6 +4,6 @@ import App from "./App";
 
 test("renders fetch button", () => {
   render(<App />);
-  const linkElement = screen.getByText(/Fetch/i);
+  const linkElement = screen.getByText(/Start/i);
   expect(linkElement).toBeInTheDocument();
 });
